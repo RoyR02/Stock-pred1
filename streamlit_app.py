@@ -20,4 +20,4 @@ if csv is not None:
 df.head()
 
 with st.expander('Graph'):
-  st.line_chart(data = csv, x = Date , y = Adj Close, x_label=Date, y_label = Price , color = Red, width=None, height=None, use_container_width=True)
+  st.line_chart(data = csv, x = Date , y = Close, x_label=Date, y_label = Price , color = Red, width=None, height=None, use_container_width=True)
