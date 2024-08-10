@@ -3,7 +3,6 @@ import pandas as pd
 import math
 import numpy as np
 import pandas as pd
-import yfinance as yf
 import re
 import json
 from sklearn.preprocessing import MinMaxScaler
