@@ -12,7 +12,7 @@ with st.expander('Data'):
   df  = pd.read_csv('https://raw.githubusercontent.com/RoyR02/Stock-pred1/master/AAPL.csv',nrows= 10)
   df
 csv = st.file_uploader("upload file", type={"csv"})
-if spectra is not None:
+if csv is not None:
     df = pd.read_csv(spectra)
 # st.write(spectra_df)
 #Input Data
