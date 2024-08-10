@@ -1,2 +1,3 @@
+pip install --upgrade pip
 streamlit>=1.26.0
 scikitlearn>=1.5.1
