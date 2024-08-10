@@ -18,4 +18,6 @@ if csv is not None:
 #Input Data
 # df = yf.download('AAPL', start='2010-01-01', end='2020-12-31')
 df.head()
-st.line_chart(csv)
+
+with st.expander('Graph'):
+  st.line_chart(data = csv, x = Date , y = Adj Close, x_label=Date, y_label = Price , color = Red, width=None, height=None, use_container_width=True)
