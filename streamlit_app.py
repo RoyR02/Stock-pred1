@@ -13,7 +13,7 @@ with st.expander('Data'):
   df
 csv = st.file_uploader("upload file", type={"csv"})
 if csv is not None:
-    df = pd.read_csv(spectra)
+    df = pd.read_csv(csv)
 # st.write(spectra_df)
 #Input Data
 # df = yf.download('AAPL', start='2010-01-01', end='2020-12-31')
