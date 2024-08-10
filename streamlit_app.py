@@ -1,5 +1,19 @@
 import streamlit as st
 import pandas as pd
+import math
+import pandas_datareader.data as web
+import numpy as np
+import pandas as pd
+import yfinance as yf
+import re
+import json
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense, LSTM
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, mean_absolute_percentage_error
+import time
+from keras.utils import plot_model
 
 st.title('Stock Market Prediction')
 
@@ -9,43 +23,17 @@ with st.expander('Data'):
   st.write('**Raw Data**')
   df  = pd.read_csv('https://raw.githubusercontent.com/RoyR02/Stock-pred1/master/AAPL.csv',nrows= 10)
   df
-import streamlit as st
-import subprocess
-import os
-import sys
-import git
+csv = st.file_uploader("upload file", type={"csv"})
+if spectra is not None:
+    df = pd.read_csv(spectra)
+# st.write(spectra_df)
+#Input Data
+# df = yf.download('AAPL', start='2010-01-01', end='2020-12-31')
+df.head()
 
-# Function to clone and install a library from a GitHub repository
-def install_library(repo_url):
-    try:
-        # Clone the repository
-        repo_name = repo_url.split('/')[-1].replace('.git', '')
-        repo_path = os.path.join(os.getcwd(), repo_name)
-        
-        if os.path.exists(repo_path):
-            st.warning(f"Repository '{repo_name}' already exists.")
-        else:
-            st.info(f"Cloning repository '{repo_name}'...")
-            git.Repo.clone_from(repo_url, repo_name)
-            st.success(f"Repository '{repo_name}' cloned successfully.")
-        
-        # Install the library using pip
-        st.info(f"Installing library from '{repo_name}'...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", repo_path])
-        st.success(f"Library '{repo_name}' installed successfully.")
-        
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-
-# Streamlit app interface
-st.title("Python Library Installer from GitHub")
-
-repo_url = st.text_input("Enter GitHub Repository URL:")
-
-if st.button("Install Library"):
-    if repo_url:
-        install_library(repo_url)
-    else:
-        st.warning("Please enter a valid GitHub repository URL.")
-
-
+plt.figure(figsize=(16,8))
+plt.title('Closing Price History')
+plt.plot(df['Close'])
+plt.xlabel('Date', fontsize=18)
+plt.ylabel('Close Price USD ($)', fontsize=18)
+plt.show()
