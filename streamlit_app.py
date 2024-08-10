@@ -1,5 +1,5 @@
 import streamlit as st
 
-st.title('🎈 App Name')
+st.title('Stock Market Prediction')
 
-st.write('Hello world!')
+st.info('Stock Market Prediction using NN')
