@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
-import math
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 st.title('Stock Market Prediction')
 
@@ -20,10 +18,3 @@ if spectra is not None:
 #Input Data
 # df = yf.download('AAPL', start='2010-01-01', end='2020-12-31')
 df.head()
-
-plt.figure(figsize=(16,8))
-plt.title('Closing Price History')
-plt.plot(df['Close'])
-plt.xlabel('Date', fontsize=18)
-plt.ylabel('Close Price USD ($)', fontsize=18)
-plt.show()
