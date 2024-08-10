@@ -1,18 +1,9 @@
-!pip install sklearn
 import streamlit as st
 import pandas as pd
 import math
 import numpy as np
 import pandas as pd
-import re
-import json
-from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, mean_absolute_percentage_error
-import time
-from keras.utils import plot_model
 
 st.title('Stock Market Prediction')
 
