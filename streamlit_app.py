@@ -7,7 +7,7 @@ st.info('Stock Market Prediction using NN')
 
 with st.expander('Data'):
   st.write('**Raw Data**')
-  df  = pd.read_csv('https://raw.githubusercontent.com/RoyR02/Stock-pred1/master/AAPL.csv', index = 10)
+  df  = pd.read_csv('https://raw.githubusercontent.com/RoyR02/Stock-pred1/master/AAPL.csv',nrows= 10)
   df
 
 
