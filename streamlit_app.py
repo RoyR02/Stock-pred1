@@ -1,23 +1,45 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import pandas as pd
+# import matplotlib.pyplot as plt
 
-st.title('Stock Market Prediction')
+# Set the title of the Streamlit app
+st.title('Stock Market Line Graph')
 
-st.info('Stock Market Prediction using NN')
+# Upload the CSV file
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
-with st.expander('Data'):
-  st.write('**Raw Data**')
-  df  = pd.read_csv('https://raw.githubusercontent.com/RoyR02/Stock-pred1/master/AAPL.csv',nrows= 10)
-  df
-csv = st.file_uploader("upload file", type={"csv"})
-if csv is not None:
-    df = pd.read_csv(csv)
-# st.write(spectra_df)
-#Input Data
-# df = yf.download('AAPL', start='2010-01-01', end='2020-12-31')
-df.head()
+if uploaded_file is not None:
+    # Read the CSV file into a DataFrame
+    df = pd.read_csv(uploaded_file)
 
-with st.expander('Graph'):
-  st.line_chart(data = csv, x = Date , y = Close, x_label=Date, y_label = Price , color = Red, width=None, height=None, use_container_width=True)
+    # Display the DataFrame
+    st.write("Data Preview:")
+    st.dataframe(df)
+
+    # Check if required columns are present in the DataFrame
+    if 'Date' in df.columns and 'Close' in df.columns:
+        # Convert the 'Date' column to datetime format
+        df['Date'] = pd.to_datetime(df['Date'])
+
+        # Set 'Date' as the index of the DataFrame
+        df.set_index('Date', inplace=True)
+
+        # Plot the line graph
+        st.write("Line Graph:")
+        st.line_chart(df['Close'])
+
+        # Optionally, plot using matplotlib for more customization
+        st.write("Matplotlib Line Graph:")
+        fig, ax = plt.subplots()
+        ax.plot(df.index, df['Close'], label='Close Price')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Close Price')
+        ax.set_title('Stock Market Close Price Over Time')
+        ax.legend()
+
+        st.pyplot(fig)
+    else:
+        st.write("The CSV file does not contain the required 'Date' and 'Close' columns.")
+
+else:
+    st.write("Please upload a CSV file.")
