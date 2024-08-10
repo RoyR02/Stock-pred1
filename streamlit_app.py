@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import math
-import pandas_datareader.data as web
 import numpy as np
 import pandas as pd
 import yfinance as yf
